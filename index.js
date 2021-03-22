@@ -12,6 +12,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 
+
+app.get('/', (req, res) => {
+    res.send('hola, este servidor solo tiene un metodo POST');
+});
+
 app.post('/paymentIntent', async (req, res) => {
 
     try {

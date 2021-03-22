@@ -4,7 +4,7 @@
   "description": "api connect with stripe for make payment in app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
