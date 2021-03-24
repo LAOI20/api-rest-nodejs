@@ -31,7 +31,7 @@ app.post('/paymentIntent', async (req, res) => {
         });
     
         var resultt = await stripe.charges.create({
-            amount: 15000,
+            amount: req.body.amount,
             currency: 'mxn',
             source: tokenCard.id
         }); 
