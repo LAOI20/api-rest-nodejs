@@ -4,6 +4,10 @@ var app = express();
 
 const stripe = require('stripe')('sk_test_51IXow6BLs2QnbtAB2BCcinTcYmtTw1sJnIWH4ZSy87B1xmxiSkmwa0z3AtgXnICWcm6EgytDFDsnVAS8Z8cti0yz00Y2txJLBI');
 
+const {RtcTokenBuilder, RtmTokenBuilder, RtcRole, RtmRole} = require('agora-access-token');
+const appID = 'd04ce9553fe3416aac0e345a66dcf3b9';
+const appCertificate = 'ed6ac9339eb34401bfd436a622be09eb';
+const role = RtcRole.PUBLISHER;
 
 var port = process.env.PORT || 8080;
 
@@ -44,6 +48,16 @@ app.post('/paymentIntent', async (req, res) => {
 
         res.send('error');
     }
+});
+
+
+app.post('/createTokenAgora', (req, res) => {
+
+    var tokenAgora = RtcTokenBuilder.buildTokenWithUid(
+        appID, appCertificate, 'channel', 0, role, 0
+    );
+
+    res.send(tokenAgora);
 });
 
 
