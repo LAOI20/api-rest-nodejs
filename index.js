@@ -54,7 +54,7 @@ app.post('/paymentIntent', async (req, res) => {
 app.post('/createTokenAgora', (req, res) => {
 
     var tokenAgora = RtcTokenBuilder.buildTokenWithUid(
-        appID, appCertificate, 'channel', 0, role, 0
+        appID, appCertificate, req.body.channelName, 0, role, 0
     );
 
     res.send(tokenAgora);
